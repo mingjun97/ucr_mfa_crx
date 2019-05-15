@@ -1,10 +1,10 @@
 # ucr_mfa_crx
 
-A chrome extension for bypass ucr mfa. This extension is based on the Passcode feature provided by [this](https://myaccount.ucr.edu/app/home). You should only use it at your own machine. This extesnsion will be not conflict with any other MFA methods, for instance DUO mobile or SMS, unless you also use Passcode manually. We currently do **NOT** upload your MFA Passcode to anywhere. Your security very matters. Feel free to use it.
+A chrome extension for auto-filling ucr mfa. This extension is based on the Passcode feature provided by [this](https://myaccount.ucr.edu/app/home). You should only use it at your own machine. This extesnsion will be not conflict with any other MFA methods, for instance DUO mobile or SMS, unless you also use Passcode manually. We currently do **NOT** upload your MFA Passcode to anywhere. Your security very matters. Feel free to use it.
 
 ## Usage
 
- 1. Install ucr_mfa_crx following this [link](https://github.com/web-scrobbler/web-scrobbler/wiki/Install-an-unpacked-extension)
+ 1. Install ucr_mfa_crx following this [link](https://github.com/mingjun97/ucr_mfa_crx/wiki/Installation-Guide)
  2. Login https://myaccount.ucr.edu/app/home, you could use any MFA method.
  3. Click the extension(typically it's on your top-right corner), input your NetID and password.
  4. Click enable, wait for a while. If the switch toggle to on, then you are all set! Otherwise, you may open an issue or contact me.
