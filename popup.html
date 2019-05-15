@@ -9,29 +9,37 @@
             Please input your NetID, Password, & Passcode to enable this extension for the first time.
         </span>
         <br/>
-        <form action="#" style="display: flex;">
-            <p>
-              <label>
-                <input name="group1" type="radio" checked/>
-                <span id='status'>Off</span>
-              </label>
-            </p>
-        </form>
-        <div class="input-field">
-            <input id="netid" type="text" class="validate">
-            <label for="netid">Net ID</label>
+        <br/>
+        <div class="switch">
+                <label>
+                  Off
+                  <input type="checkbox" id="status">
+                  <span class="lever"></span>
+                  On
+                </label>
         </div>
-        <div class="input-field">
-            <input id="password" type="password" class="validate">
-            <label for="password">Password</label>
-        </div>
-        <div class="input-field">
-            <input id="otp" type="text" class="validate">
-            <label for="otp">Passcode</label>
+
+        <div id="forms" style="transition: all 1s; max-height: 100%">
+            <div class="input-field">
+                <input id="netid" type="text" class="validate">
+                <label for="netid">Net ID</label>
+            </div>
+            <div class="input-field">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+            <div class="input-field" style="display: none;">
+                <input id="otp" type="text" class="validate">
+                <label for="otp">Passcode</label>
+            </div>
         </div>
         <a class="waves-effect waves-light btn" id="enb">Enable</a>
+        <div class="progress" id="loading" style="display: none;">
+                <div class="indeterminate"></div>
+        </div>
         <br/>
-        
-        <h6 style="text-align: center; color: green;">Made with ❤ by mingjun97</div>
+        <h6 style="text-align: center; color: green;">Made with love by mingjun97</div>
+
+        <!--Cool stuff for carrot ;) by mingjun -->
     </body>
 </html>

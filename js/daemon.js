@@ -1,6 +1,6 @@
 function initial(){
     var a = document.createElement('iframe');
-    a.src = "https://myaccount.ucr.edu";
+    a.src = "https://myaccount.ucr.edu/app/home";
     chrome.storage.local.set({initial: true}, function(){
         document.body.append(a);
     });

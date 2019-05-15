@@ -34,7 +34,7 @@
             "all_frames": true
         },
         {
-            "matches": ["https://myaccount.ucr.edu/app/home"],
+            "matches": ["https://myaccount.ucr.edu/app*"],
             "js": ["js/jquery-3.4.1.min.js","js/getPasscodes.js"],
             "run_at":"document_idle",
             "all_frames": true

@@ -14,8 +14,10 @@ function enterPasscode() {
 }
 window.addEventListener("message", function(e){
     var keys = e.data.keys;
-    document.getElementById('passcodeStep1').value = keys;
-    enterPasscode()
+    if (keys){
+        document.getElementById('passcodeStep1').value = keys;
+        enterPasscode()
+    }
 }, false);
 window.postMessage({"retrieve": "code"}, "*");
 
