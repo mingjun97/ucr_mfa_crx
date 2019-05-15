@@ -6,8 +6,7 @@ function save(){
     if (netid.value.length != 0 && password.value.length != 0){
         chrome.storage.local.set(
             {"username": netid.value,
-            "password": password.value,
-            "keys": [document.getElementById('otp').value]
+            "password": password.value
             }
         ,function(){
             var bg = chrome.extension.getBackgroundPage();
@@ -30,6 +29,7 @@ function update_status(){
 }
 function initialize(){
     document.getElementById('enb').addEventListener('click', save);
+    document.getElementById('password').addEventListener('change', M.updateTextFields);
     update_me();
 }
 

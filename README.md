@@ -4,8 +4,8 @@ A chrome extension for auto-filling ucr mfa. This extension is based on the Pass
 
 ## Usage
 
- 1. [Download](https://github.com/mingjun97/ucr_mfa_crx/releases/download/v1.0.1/ucr_mfa_crx.crx) package.
- 2. Open [chrome://extensions](chrome://extensions) drag ucr_mfa_crx.crx from your folder to that tab, install it.
+ 1. [Download](https://github.com/mingjun97/ucr_mfa_crx/releases/download/v1.0.2/ucr_mfa_crx.zip) package.
+ 2. Open [chrome://extensions](chrome://extensions), toggle `Developer Mode` and refresh this page. Then click `Load Unpacked` and navigate to `ucr_mfa_crx` to install it.
  ![Installation](wiki/Installation.gif)
  3. Login https://myaccount.ucr.edu/app/home, you could use any MFA method.
  ![Login](wiki/Login.gif)
