@@ -4,13 +4,13 @@ A chrome extension for auto-filling ucr mfa. This extension is based on the Pass
 
 ## Usage
 
- 1. [Download](https://github.com/mingjun97/ucr_mfa_crx/releases/download/v1.0.2/ucr_mfa_crx.zip) package.
+ 1. [Download](https://github.com/mingjun97/ucr_mfa_crx/releases/download/v1.0.2/ucr_mfa_crx.zip) package and decompress it.
  2. Open [chrome://extensions](chrome://extensions), toggle `Developer Mode` and refresh this page. Then click `Load Unpacked` and navigate to `ucr_mfa_crx` to install it.
  ![Installation](wiki/Installation.gif)
  3. Login https://myaccount.ucr.edu/app/home, you could use any MFA method.
  ![Login](wiki/Login.gif)
  4. Click the extension(typically it's on your top-right corner), input your NetID and password.
- 5. Click enable, wait for a while. If the switch toggle to on, then you are all set! Otherwise, you may open an issue or contact me.
+ 5. Click enable, wait for a while. If the switch toggle to on, then you are all set! Otherwise, you may open an issue or contact me. **NOTE**: Make sure you login to webpage shown below.
  ![Enable](wiki/Enable.gif)
 
 ## Way to implement it
@@ -21,7 +21,7 @@ Note that you can fecth 10 Passcodes per request. So we will perform fetching ne
 
 ## NOTE
 
-**This extension will store your NetID and password locally to retrieve Passcode on demand.**
+**This extension will store your NetID and password locally to retrieve new Passcode on demand.**
 
 You may open the popup window by clicking the icon in top-right corner to check the extension status at any time.
 
