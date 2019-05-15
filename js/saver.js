@@ -30,12 +30,13 @@ function update_status(){
 }
 function initialize(){
     document.getElementById('enb').addEventListener('click', save);
+    update_me();
 }
 
 function update_me(){
     var status = document.getElementById('status');
     status.addEventListener('click', update_status);
-    chrome.storage.local.get({keys: [], username: 'unset'}, function(data){
+    chrome.storage.local.get({keys: [], username: ''}, function(data){
         document.getElementById('netid').value = data.username;
         M.updateTextFields();
         if (data.keys.length) {
