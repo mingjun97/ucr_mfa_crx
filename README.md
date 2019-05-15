@@ -1,5 +1,7 @@
 # ucr_mfa_crx
 
+![Showcase](wiki/Showcase.gif)
+
 A chrome extension for auto-filling ucr mfa. This extension is based on the Passcode feature provided by [this](https://myaccount.ucr.edu/app/home). You should only use it at your own machine. This extesnsion will be not conflict with any other MFA methods, for instance DUO mobile or SMS, unless you also use Passcode manually. We currently do **NOT** upload your MFA Passcode to anywhere. Your security very matters. Feel free to use it.
 
 ## Usage
