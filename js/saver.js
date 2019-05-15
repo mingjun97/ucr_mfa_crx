@@ -28,9 +28,11 @@ function update_status(){
     }else{
     }
 }
+function initialize(){
+    document.getElementById('enb').addEventListener('click', save);
+}
 
 function update_me(){
-    document.getElementById('enb').addEventListener('click', save);
     var status = document.getElementById('status');
     status.addEventListener('click', update_status);
     chrome.storage.local.get({keys: [], username: 'unset'}, function(data){
@@ -51,7 +53,7 @@ function update_me(){
         }
     })
 }
-document.addEventListener('DOMContentLoaded', update_me);
+document.addEventListener('DOMContentLoaded', initialize);
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
     if (request === 'update_status'){
         update_me();
