@@ -1,0 +1,54 @@
+{
+    "manifest_version": 2,
+    "name": "UCR MFA",
+    "version": "1.0.0",
+    "description": "A chrome extension to bypass UCR MFA",
+    "icons":
+    {
+        "16": "img/icon.jpg",
+        "48": "img/icon.jpg",
+        "128": "img/icon.jpg"
+    },
+    "browser_action": 
+    {
+        "default_icon": "img/icon.jpg",
+        "default_title": "Made by mingjun97 with love",
+        "default_popup": "popup.html"
+    },
+    "background":
+    {
+        "scripts": ["js/jquery-3.4.1.min.js","js/daemon.js"]
+    },
+    "content_scripts": 
+    [
+        {
+            "matches": ["https://myaccount.ucr.edu/casDuo?*"],
+            "js": ["js/handler.js"],
+            "run_at": "document_idle",
+            "all_frames": true
+        },
+        {
+            "matches": ["https://auth.ucr.edu/cas/login?service=https%3A%2F%2Fmyaccount.ucr.edu%2Flogin%2Fcas&renew=true"],
+            "js": ["js/login.js"],
+            "run_at": "document_idle",
+            "all_frames": true
+        },
+        {
+            "matches": ["https://myaccount.ucr.edu/app/home"],
+            "js": ["js/jquery-3.4.1.min.js","js/getPasscodes.js"],
+            "run_at":"document_idle",
+            "all_frames": true
+        }
+    ],
+    "permissions":
+    [
+        "tabs", 
+        "webRequest", 
+        "webRequestBlocking",
+        "storage", 
+        "https://*/*"
+    ],
+    "web_accessible_resources": ["js/inject.js", "js/login_inject.js"],
+    "homepage_url": "https://github.com/mingjun97/ucr_mfa_crx",
+    "devtools_page": "devtools.html"
+}
