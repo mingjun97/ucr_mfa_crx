@@ -12,7 +12,8 @@ injectCustomJs("js/login_inject.js");
 setTimeout( function(){
     chrome.storage.local.get({username:'unknown', password: 'unknown', initial: false, autologin: false}, function(data){
         if (data.initial || data.autologin){
-            window.postMessage({"username": data.username, "password": data.password},"*")
+            if (data.username != 'unknown')
+                window.postMessage({"username": data.username, "password": data.password},"*")
         }
     });
 }, 100);
