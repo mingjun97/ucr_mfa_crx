@@ -14,21 +14,49 @@ function getCode(){
         if (r.length > 5){ // should be equal with 10
             chrome.storage.local.set({keys: r, initial: false}, function(){ 
                 chrome.runtime.sendMessage('update_status');
+                document.body.innerHTML = `
+                <h1>UCR MFA CRX Notification</h1>
+                <div> Congraduations! You're all set! This window will be closed within <span id="ucr_mfa_crx_timer"> 3 </span> seconds. </div>
+                `;
+                setInterval(function(){ document.getElementById("ucr_mfa_crx_timer").innerText = ucr_mfa_crx_timer; ucr_mfa_crx_timer--;}, 1000);
             });
         }
     });
 }
 
+var ucr_mfa_crx_timer = 2; 
+
 function getCodeWithCheck(){
+    clearInterval(timer);
+    if (counter++ > 5) {return;}
     chrome.storage.local.get({initial: false}, function(data){
-        setTimeout( function (){
         if (data.initial) {
             $.get("https://myaccount.ucr.edu/api/user/1").done(function(data){
-                if (data.success)  getCode();
+                if (data.success)  {
+                    getCode();}
+                else {
+                    timer = setInterval(
+                        function(){
+                            if (window.location.href === "https://myaccount.ucr.edu/app/home"){
+                                getCodeWithCheck();
+                            }
+                        }
+                        ,1000
+                    )
+                    $.get("https://myaccount.ucr.edu/app/home")
+                }
             });
-        }
-        }, 3000);
+        };
     })
 }
 
-$(document).ready(getCodeWithCheck);
+var counter = 0;
+var timer = 
+setInterval(
+    function(){
+        if (window.location.href === "https://myaccount.ucr.edu/app/home"){
+            getCodeWithCheck();
+        }
+    }
+    ,500
+);

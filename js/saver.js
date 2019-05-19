@@ -10,7 +10,7 @@ function save(){
             }
         ,function(){
             var bg = chrome.extension.getBackgroundPage();
-            bg.initial();
+            bg.setup();
             enb.style = "display: none;"
             loading.style = "display: flex;"
         })
@@ -29,16 +29,31 @@ function update_status(){
 }
 function initialize(){
     document.getElementById('enb').addEventListener('click', save);
-    document.getElementById('password').addEventListener('change', M.updateTextFields);
+    document.getElementById('password').addEventListener('keyup', function(event){
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("enb").click();
+        }
+    });
     update_me();
+    var elems = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(elems);
+    document.getElementById('autologin').addEventListener('click', update_autologin);
+}
+
+function update_autologin(){
+    chrome.storage.local.set({autologin:document.getElementById('autologin').checked});
 }
 
 function update_me(){
     var status = document.getElementById('status');
     status.addEventListener('click', update_status);
-    chrome.storage.local.get({keys: [], username: ''}, function(data){
+    chrome.storage.local.get({keys: [], username: '', autologin: false}, function(data){
         document.getElementById('netid').value = data.username;
         M.updateTextFields();
+        if (data.autologin){
+            document.getElementById('autologin').checked = true;
+        }
         if (data.keys.length) {
             status.checked = true;
             status.disabled = false;

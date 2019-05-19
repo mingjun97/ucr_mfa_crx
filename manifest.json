@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "UCR MFA",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A chrome extension for auto-filling UCR MFA",
     "icons":
     {
@@ -28,7 +28,7 @@
             "all_frames": true
         },
         {
-            "matches": ["https://auth.ucr.edu/cas/login?service=https%3A%2F%2Fmyaccount.ucr.edu%2Flogin%2Fcas&renew=true"],
+            "matches": ["https://auth.ucr.edu/cas/login?service=*"],
             "js": ["js/login.js"],
             "run_at": "document_idle",
             "all_frames": true
@@ -46,7 +46,8 @@
         "storage", 
         "https://myaccount.ucr.edu/casDuo?*",
         "https://auth.ucr.edu/cas/login?*",
-        "https://myaccount.ucr.edu/app*"
+        "https://myaccount.ucr.edu/app*",
+        "notifications"
     ],
     "web_accessible_resources": ["js/inject.js", "js/login_inject.js"],
     "homepage_url": "https://github.com/mingjun97/ucr_mfa_crx",

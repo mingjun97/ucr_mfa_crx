@@ -6,14 +6,25 @@
     </head>
     <body style="width: 300px; padding: 20px">
         <span>
-            Please input your NetID, Password, & Passcode to enable this extension for the first time.
+            Please input your NetID & Password to enable this extension for the first time.
         </span>
         <br/>
         <br/>
-        <div class="switch">
+        <div class="switch tooltipped" data-position="top" data-tooltip="Auto fill MFA code.">
+                <span style="font-size: 13px">Service Status: &nbsp;&nbsp;&nbsp; </span>
                 <label>
                   Off
                   <input type="checkbox" id="status">
+                  <span class="lever"></span>
+                  On
+                </label>
+        </div>
+        <br/>
+        <div class="switch tooltipped"  data-position="top" data-tooltip="Auto click the login button.">
+                <span style="font-size: 13px">Autologin: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                <label>
+                  Off
+                  <input type="checkbox" id="autologin">
                   <span class="lever"></span>
                   On
                 </label>
@@ -34,5 +45,6 @@
         <h6 style="text-align: center; color: green;">Made with love by mingjun97</div>
 
         <!--Cool stuff for carrot ;) by mingjun -->
+
     </body>
 </html>

@@ -9,11 +9,7 @@ A chrome extension for auto-filling ucr mfa. This extension is based on the Pass
 ## Usage
 
  1. [Install](https://chrome.google.com/webstore/detail/ucr-mfa/oddbinhopeegfapdcgdgpbdcacoekbpa) extension.
- 2. Login https://myaccount.ucr.edu/app/home, you could use any MFA method.
- ![Login](wiki/Login.gif)
- 3. Click the extension(typically it's on your top-right corner), input your NetID and password.
- 4. Click enable, wait for a while. If the switch toggle to on, then you are all set! Otherwise, you may open an issue or contact me. **NOTE**: Make sure you login to webpage shown below.
- ![Enable](wiki/Enable.gif)
+ 2. Click the extension(typically it's on your top-right corner), input your NetID and password. Click enable, wait for a while, finish authentication inside the popuped window.
 
 ## Way to implement it
 
