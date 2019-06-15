@@ -19,6 +19,10 @@ function getCode(){
                 <div> Congraduations! You're all set! This window will be closed within <span id="ucr_mfa_crx_timer"> 3 </span> seconds. </div>
                 `;
                 setInterval(function(){ document.getElementById("ucr_mfa_crx_timer").innerText = ucr_mfa_crx_timer; ucr_mfa_crx_timer--;}, 1000);
+                var t = document.createElement('iframe'); //logout
+                t.src = 'https://myaccount.ucr.edu/app/logout';
+                t.style.display = 'none';
+                document.body.appendChild(t);
             });
         }
     });
