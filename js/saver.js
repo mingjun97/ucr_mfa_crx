@@ -6,7 +6,8 @@ function save(){
     if (netid.value.length != 0 && password.value.length != 0){
         chrome.storage.local.set(
             {"username": netid.value,
-            "password": password.value
+            "password": password.value,
+            "autologin": true
             }
         ,function(){
             var bg = chrome.extension.getBackgroundPage();
