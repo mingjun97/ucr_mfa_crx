@@ -28,4 +28,4 @@ ymj777905@gmail.com
 
 ## TODO
 
-- [ ] Sync Passcodes with your google account.
+- [x] Sync Passcodes with your google account.
