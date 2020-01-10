@@ -58,6 +58,8 @@ function initialize(){
                 if(confirm("Do you want to delete synced data? (Credentials, Passcodes, etc.)")){
                     // clean up synced data
                     chrome.storage.sync.set({keys: [], netid: null, password: null, autologin: false});
+                    // clean up local data
+                    chrome.storage.local.set({keys: [], netid: null, password: null, autologin: false});
                 }
             } else{ // Turning on sync
                 chrome.storage.sync.get({keys: []}, function(data){
