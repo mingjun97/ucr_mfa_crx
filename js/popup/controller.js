@@ -55,17 +55,27 @@ function initialize(){
     document.getElementById('sync').addEventListener('click', function(){
         chrome.storage.local.get({synced: false}, function(data){
             if (data.synced){ // Turning off sync
-                if(confirm("Do you want to delete synced data? (Credentials, Passcodes, etc.)")){
-                    // clean up synced data
-                    chrome.storage.sync.set({keys: [], netid: null, password: null, autologin: false});
-                    // clean up local data
-                    chrome.storage.local.set({keys: [], netid: null, password: null, autologin: false});
-                }
-            } else{ // Turning on sync
+                chrome.storage.sync.get({keys: [], netid: null, password: null, autologin: false}, function(data){
+                    chrome.storage.local.set(data, function() {
+                        if(confirm("Do you want to delete synced data? (Credentials, Passcodes, etc.)")){
+                            chrome.storage.sync.set({keys: [], netid: null, password: null, autologin: false});
+                        }
+                    });
+                })
+            }else{ // Turning on sync
                 chrome.storage.sync.get({keys: []}, function(data){
-                    if (data.keys.length == 0) { // dont have synced passcodes through storage
+                    if (data.keys.length == 0) { // dont have synced passcodes on cloud
                         chrome.storage.local.get({keys: [], netid: "", password: "", autologin: true}, function(data){
                             chrome.storage.sync.set(data);
+                        })
+                    }else{ // have synced passcodes on cloud
+                        chrome.storage.local.get({keys: [], netid: "", password: "", autologin: true}, function(data){
+                            if (data.keys.length > 0){
+                                if(confirm("We found out that you have credentials saved on cloud but we don't know which is the latest one.\nDo you want to use local credentials override cloud data? (Credentials, Passcodes, etc.)")){
+                                    // override
+                                    chrome.storage.sync.set(data);
+                                }
+                            }
                         })
                     }
                 })
