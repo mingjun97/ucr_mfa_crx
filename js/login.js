@@ -18,10 +18,20 @@ function sendCredentials(data){
 
 setTimeout( function(){
     chrome.storage.local.get({synced: false, initial: false, autologin: false, lastLogin: 0}, function(data){
-        if ((data.initial || data.autologin) && (Date.now() - data.lastLogin > 1000)){
-            if (data.synced){
-                chrome.storage.sync.get({username:'unknown', password: 'unknown'}, sendCredentials)
-            }else{
+        if (data.synced){
+            // passcode synced
+            if (data.initial){
+                chrome.storage.sync.get({username: 'unknown', password: 'unknown'}, sendCredentials);
+            }else if (Date.now() - data.lastLogin > 1000){
+                chrome.storage.sync.get({autologin: false}, function(data){
+                    if (data.autologin){
+                        chrome.storage.sync.get({username: 'unknown', password: 'unknown'}, sendCredentials);
+                    }
+                });
+            }
+        }else{
+            // passcode not synced
+            if ((data.initial || data.autologin) && (Date.now() - data.lastLogin > 1000)){
                 chrome.storage.local.get({username:'unknown', password: 'unknown'}, sendCredentials)
             }
         }

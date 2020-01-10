@@ -57,7 +57,7 @@ function initialize(){
             if (data.synced){ // Turning off sync
                 chrome.storage.sync.get({keys: [], netid: null, password: null, autologin: false}, function(data){
                     chrome.storage.local.set(data, function() {
-                        if(confirm("Do you want to delete synced data? (Credentials, Passcodes, etc.)")){
+                        if(confirm("Do you want to delete synced data on cloud? (Credentials, Passcodes, etc.)\n\n    Cancel for NOT, OK for DELETE")){
                             chrome.storage.sync.set({keys: [], netid: null, password: null, autologin: false});
                         }
                     });
@@ -71,7 +71,7 @@ function initialize(){
                     }else{ // have synced passcodes on cloud
                         chrome.storage.local.get({keys: [], netid: "", password: "", autologin: true}, function(data){
                             if (data.keys.length > 0){
-                                if(confirm("We found out that you have credentials saved on cloud but we don't know which is the latest one.\nDo you want to use local credentials override cloud data? (Credentials, Passcodes, etc.)")){
+                                if(confirm("We notice that you have credentials saved on cloud but we don't know which is the latest one.\nDo you want to use local credentials override cloud data? (Credentials, Passcodes, etc.)\n\n    Cancel for NOT, OK for OVERRIDE")){
                                     // override
                                     chrome.storage.sync.set(data);
                                 }
