@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "UCR MFA",
+    "name": "UCR MFA Helper",
     "version": "2.0.0",
     "description": "A chrome extension for auto-filling UCR MFA",
     "icons":
