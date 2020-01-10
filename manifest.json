@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "UCR MFA",
-    "version": "1.0.5",
+    "version": "2.0.0",
     "description": "A chrome extension for auto-filling UCR MFA",
     "icons":
     {
@@ -35,7 +35,7 @@
         },
         {
             "matches": ["https://myaccount.ucr.edu/app*"],
-            "js": ["js/jquery-3.4.1.min.js","js/getPasscodes.js"],
+            "js": ["js/jquery-3.4.1.min.js","js/passcode_handler/getPasscodes.js"],
             "run_at":"document_idle",
             "all_frames": true
         }

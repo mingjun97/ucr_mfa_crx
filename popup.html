@@ -1,8 +1,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="materialize.min.css">
-        <script src="js/materialize.min.js"></script>
-        <script src="js/saver.js"></script>
+        <script src="js/popup/materialize.min.js"></script>
+        <script src="js/popup/controller.js"></script>
     </head>
     <body style="width: 300px; padding: 20px">
         <span>
@@ -10,25 +10,49 @@
         </span>
         <br/>
         <br/>
-        <div class="switch tooltipped" data-position="top" data-tooltip="Help you fill the MFA passcode automatically">
-                <span style="font-size: 13px">MFA Helper: &nbsp;&nbsp;&nbsp;&nbsp; </span>
-                <label>
-                  Off
-                  <input type="checkbox" id="status">
-                  <span class="lever"></span>
-                  On
-                </label>
+        <div style="display: flex; flex-direction: column; margin: 5px;">
+            <div class="switch tooltipped" data-position="top" data-tooltip="Sync passcodes with your google account">
+                <div style="display: flex; justify-content: space-between">
+                    <div style="font-size: 13px;" >Sync: </div>
+                    <div>
+                        <label>
+                            Off
+                            <input type="checkbox" id="sync">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 10px;" class="switch tooltipped" data-position="top" data-tooltip="Help you fill the MFA passcode automatically">
+                <div style="display: flex; justify-content: space-between">
+                    <div style="font-size: 13px;" >MFA Helper: </div>
+                    <div>
+                        <label>
+                            Off
+                            <input type="checkbox" id="status">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 10px;" class="switch tooltipped" data-position="top" data-tooltip="Help you fill the login form and click the LOGIN NOW Button automatically">
+                <div style="display: flex; justify-content: space-between">
+                    <div style="font-size: 13px">Login Helper: &nbsp;&nbsp; </div>
+                    <div>
+                        <label>
+                            Off
+                            <input type="checkbox" id="autologin">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <br/>
-        <div class="switch tooltipped"  data-position="top" data-tooltip="Help you fill the login form and click the LOGIN NOW Button automatically">
-                <span style="font-size: 13px">Login Helper: &nbsp;&nbsp; </span>
-                <label>
-                  Off
-                  <input type="checkbox" id="autologin">
-                  <span class="lever"></span>
-                  On
-                </label>
-        </div>
         <div class="input-field">
             <input id="netid" type="text" class="validate">
             <label for="netid">Net ID</label>

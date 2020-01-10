@@ -9,14 +9,21 @@ function injectCustomJs(jsPath)
 
 injectCustomJs("js/login_inject.js");
 
+function sendCredentials(data){
+    if (data.username != "unknown"){
+        window.postMessage({"username": data.username, "password": data.password}, "*");
+        chrome.storage.local.set({lastLogin: Date.now()});
+    }
+}
+
 setTimeout( function(){
-    chrome.storage.local.get({username:'unknown', password: 'unknown', initial: false, autologin: false, lastLogin: 0}, function(data){
-        if (data.initial || data.autologin){
-            if (Date.now() - data.lastLogin > 1000) { // if last tried within 1 second then bypass login this time
-                if (data.username != 'unknown')
-                    window.postMessage({"username": data.username, "password": data.password},"*")
-                chrome.storage.local.set({lastLogin: Date.now()})
+    chrome.storage.local.get({synced: false, initial: false, autologin: false, lastLogin: 0}, function(data){
+        if ((data.initial || data.autologin) && (Date.now() - data.lastLogin > 1000)){
+            if (data.synced){
+                chrome.storage.sync.get({username:'unknown', password: 'unknown'}, sendCredentials)
+            }else{
+                chrome.storage.local.get({username:'unknown', password: 'unknown'}, sendCredentials)
             }
         }
-    });
+    })
 }, 100);

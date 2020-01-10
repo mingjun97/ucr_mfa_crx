@@ -1,6 +1,3 @@
-
-
-
 function getCode(){
     var msg = $.get("https://myaccount.ucr.edu/api/downloadPasscodes",function(data) {
         var msg = data;
@@ -12,7 +9,12 @@ function getCode(){
             }
         }
         if (r.length > 5){ // should be equal with 10
-            chrome.storage.local.set({keys: r, initial: false}, function(){ 
+            chrome.storage.local.get({synced: false}, function (data) {
+                if (data.synced){
+                    chrome.storage.sync.set({keys: r, initial: false});
+                }else{
+                    chrome.storage.local.set({keys: r, initial: false});
+                };
                 chrome.runtime.sendMessage('update_status');
                 document.body.innerHTML = `
                 <h1>UCR MFA CRX Notification</h1>
@@ -20,7 +22,7 @@ function getCode(){
                 `;
                 setInterval(function(){ document.getElementById("ucr_mfa_crx_timer").innerText = ucr_mfa_crx_timer; ucr_mfa_crx_timer--;}, 1000);
                 $.get('https://myaccount.ucr.edu/logoff');
-            });
+            })
         }
     });
 }
