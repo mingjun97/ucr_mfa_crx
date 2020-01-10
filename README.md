@@ -4,7 +4,9 @@
 
 ![Showcase](wiki/Showcase.gif)
 
-A chrome extension for auto-filling ucr mfa. This extension is based on the Passcode feature provided by [this](https://myaccount.ucr.edu/app/home). You should only use it at your own machine. This extesnsion will be not conflict with any other MFA methods, for instance DUO mobile or SMS, unless you also use Passcode manually. We currently do **NOT** upload your MFA Passcode to anywhere. Your security very matters. Feel free to use it.
+A chrome extension for auto-filling ucr mfa. This extension is based on the Passcode feature provided by [this](https://myaccount.ucr.edu/app/home). You should only use it at your own machine. This extesnsion will be not conflict with any other MFA methods, for instance DUO mobile or SMS, unless you also use Passcode manually. We currently do **NOT** upload your MFA Passcode to anywhere unless you enable **sync**. Your security very matters.
+
+**SYNC are available now!** All your crendentials are managed/synced by google if you enable *SYNC*.
 
 ## Usage
 
@@ -13,9 +15,11 @@ A chrome extension for auto-filling ucr mfa. This extension is based on the Pass
 
 ## Way to implement it
 
-Inject js code one the MFA page. After MFA passed. We perform fetching from [this link](https://myaccount.ucr.edu/api/downloadPasscodes).
-After parsing and store it locally, we could automatic fill the code next time.
-Note that you can fecth 10 Passcodes per request. So we will perform fetching new Passcodes after every 9 time logins to keep this extension always works.
+Inject js code on the MFA page. After MFA authencated. We download passcodes via https://myaccount.ucr.edu/api/downloadPasscodes, which is an API for download passcodes.
+Then store it locally/in google account. Once there is a MFA form activated, this extension could retrieve the saved passcode and fill the form automatically.
+A batch of downloaded passcodes has ten valid records, thus this extension will download passcodes every 7 filling occured under the aim of maintain persistence.
+
+**You may receive email from UCR System to inform you someone has downloaded the passcodes, that excatly what this extension did.**
 
 ## NOTE
 
