@@ -20,7 +20,7 @@ setTimeout( function(){
     chrome.storage.local.get({synced: false, initial: false, autologin: false, lastLogin: 0}, function(data){
         if (data.synced){
             // passcode synced
-            if (data.initial){
+            if (data.initial && Date.now() - data.lastLogin > 1000){
                 chrome.storage.sync.get({username: 'unknown', password: 'unknown'}, sendCredentials);
             }else if (Date.now() - data.lastLogin > 1000){
                 chrome.storage.sync.get({autologin: false}, function(data){

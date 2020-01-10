@@ -66,7 +66,7 @@ function initialize(){
                 chrome.storage.sync.get({keys: []}, function(data){
                     if (data.keys.length == 0) { // dont have synced passcodes on cloud
                         chrome.storage.local.get({keys: [], netid: "", password: "", autologin: true}, function(data){
-                            chrome.storage.sync.set(data);
+                            chrome.storage.sync.set(data, update_me);
                         })
                     }else{ // have synced passcodes on cloud
                         chrome.storage.local.get({keys: [], netid: "", password: "", autologin: true}, function(data){

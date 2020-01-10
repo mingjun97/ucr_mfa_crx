@@ -30,7 +30,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
                         "message" : "Congratulations! UCR MFA Setup success. You're all set.",
                         "title" : "UCR MFA Setup Notification",
                         "type" : "basic",
-                        "iconUrl": "img/icon.png"
+                        "iconUrl": "img/icon.png",
+                        "requireInteraction": true
                     }); 
                 })
                 if (poped) {setTimeout(function(){
@@ -41,4 +42,24 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
         });
     }
 
+})
+
+chrome.storage.local.get({lastSeen: "1.0.0"}, function(data) {
+    var version = chrome.runtime.getManifest().version;
+    var message = ""
+    if (data.lastSeen != version) {
+        switch (version) {
+            case "2.0.0":
+                message = "Sync with google account available!"
+                break;
+        }
+        chrome.notifications.create({
+            "message" : message,
+            "title" : "New feature! Please open UCR MFA Helper",
+            "type" : "basic",
+            "iconUrl" : "img/icon.png",
+            "requireInteraction": true
+        })
+    }
+    chrome.storage.local.set({lastSeen: version});
 })
