@@ -11,7 +11,8 @@ function getCode(){
         if (r.length > 5){ // should be equal with 10
             chrome.storage.local.get({synced: false}, function (data) {
                 if (data.synced){
-                    chrome.storage.sync.set({keys: r, initial: false});
+                    chrome.storage.sync.set({keys: r});
+                    chrome.storage.local.set({initial: false});
                 }else{
                     chrome.storage.local.set({keys: r, initial: false});
                 };
