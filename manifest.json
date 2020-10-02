@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "UCR MFA Helper",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "A chrome extension for auto-filling UCR MFA",
     "icons":
     {
@@ -22,7 +22,7 @@
     "content_scripts": 
     [
         {
-            "matches": ["https://myaccount.ucr.edu/casDuo?*"],
+            "matches": ["https://api-24ed243a.duosecurity.com/frame/prompt*"],
             "js": ["js/handler.js"],
             "run_at": "document_idle",
             "all_frames": true
@@ -44,12 +44,12 @@
     [
         "webRequest", 
         "storage", 
-        "https://myaccount.ucr.edu/casDuo?*",
         "https://auth.ucr.edu/cas/login?*",
         "https://myaccount.ucr.edu/app*",
+        "https://api-24ed243a.duosecurity.com/frame/web/v1/auth?*",
         "notifications"
     ],
-    "web_accessible_resources": ["js/inject.js", "js/login_inject.js"],
+    "web_accessible_resources": ["js/inject.js", "js/login_inject.js", "js/duo_inject.js"],
     "homepage_url": "https://github.com/mingjun97/ucr_mfa_crx",
     "devtools_page": "devtools.html"
 }

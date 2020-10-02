@@ -88,6 +88,9 @@ function initialize(){
     var elems = document.querySelectorAll('.tooltipped');
     M.Tooltip.init(elems);
     document.getElementById('autologin').addEventListener('click', update_autologin);
+    document.getElementById('autopush').addEventListener('click', update_autopush);
+    document.getElementById('githublink').onclick = PopOutGithub;
+
 }
 
 function update_autologin(){
@@ -100,6 +103,16 @@ function update_autologin(){
     })
 }
 
+function update_autopush(){
+    chrome.storage.local.get({synced: false}, function(data){
+        if(data.synced){
+            chrome.storage.sync.set({autopush:document.getElementById('autopush').checked});
+        }else{
+            chrome.storage.local.set({autopush:document.getElementById('autopush').checked});
+        }
+    })
+}
+
 function update_me(){
     var status = document.getElementById('status');
     var update_handler = function(data){
@@ -107,6 +120,9 @@ function update_me(){
         M.updateTextFields();
         if (data.autologin){
             document.getElementById('autologin').checked = true;
+        }
+        if (data.autopush){
+            document.getElementById('autopush').checked = true;
         }
         if (data.keys.length) {
             status.checked = true;
@@ -125,9 +141,9 @@ function update_me(){
     chrome.storage.local.get({synced: false}, function(data){
         document.getElementById("sync").checked = data.synced;
         if (data.synced){ // synced with google account
-            chrome.storage.sync.get({keys: [], username: '', autologin: false}, update_handler);
+            chrome.storage.sync.get({keys: [], username: '', autologin: false, autopush: false}, update_handler);
         }else{ // not synced with google account
-            chrome.storage.local.get({keys: [], username: '', autologin: false}, update_handler);
+            chrome.storage.local.get({keys: [], username: '', autologin: false, autopush: false}, update_handler);
         }
     })
 }
@@ -137,3 +153,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
         update_me();
     }
 });
+
+function PopOutGithub(){
+    chrome.tabs.create({ url: "https://github.com/mingjun97/ucr_mfa_crx" }, null)
+}

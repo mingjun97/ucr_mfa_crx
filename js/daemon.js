@@ -52,6 +52,9 @@ chrome.storage.local.get({lastSeen: "1.0.0"}, function(data) {
             case "2.0.0":
                 message = "Sync with google account available!"
                 break;
+            case "2.1.0":
+                message = "Now works on new CAS system!"
+                break;
         }
         chrome.notifications.create({
             "message" : message,

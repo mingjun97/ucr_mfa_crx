@@ -33,3 +33,15 @@ ymj777905@gmail.com
 ## TODO
 
 - [x] Sync Passcodes with your google account.
+
+## Changelog
+
+- 2.1.0
+  - Adapt to new CAS system
+  - Auto push notifications to your DUO account(More secure way but require you to acknowledge it on your phone)
+
+- 2.0.0
+  - Support sync with google account
+
+- 1.0.0
+  - First functional version

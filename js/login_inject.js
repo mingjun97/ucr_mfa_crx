@@ -4,7 +4,7 @@ window.addEventListener(
                 if(e.data.username){
                     document.getElementById('username').value = e.data.username;
                     document.getElementById('password').value = e.data.password;
-                    document.getElementById('fm1').submit();
+                    document.getElementsByName('submit')[0].click();
                 }
             }
             catch(err){
